@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Results</title>
+    {{ request}}
+  <!-- View Requests -->
+   <!--
+    <section id="requestform">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">View Requests</h2>
+            <h3 class="section-subheading text-muted">We all need a little help sometimes.</h3>
+          </div>
+        </div>
+        {% if requests %}
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div id="accordion">
+                    {% for request in requests %}
+                    {% if request.accepted == False %}
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+                                    {{ request.help }}
+                                </button>
+                            </h5>
+                        </div>
+                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Acceptance Confirmation</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to accept? An email will be sent on your behalf to the postee expressing your interest
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <a role="button" class="btn btn-primary" href="{{url_for('emailreceive', username=request.taskauthor )}}">Accept</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div id="collapse{{loop.index}}" class="collapse show" aria-labelledby="heading{{loop.index}}" data-parent="#accordion">
+                            <div class="card-body">
+                                {{ request.description }}
+                              <p>{{ request.email }}</p>
+                                <!-- Button trigger modal
+                                <button type="button" style = "float:right;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" {% if not username %}disabled{%endif%}>
+                                    Accept
+                                </button>
+
+                                <!-- Modal
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    -->
+</head>
+<body>
+
+</body>
+</html>

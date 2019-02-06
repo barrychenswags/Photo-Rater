@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Casual Images
+</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+
+<head>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+
+    <h1><strong>Casual</strong></h1>
+
+    <div>
+            <div id="user1photos">
+                <h3>User1:</h3>
+
+
+                <figure>
+                    <img src="img/filthyCasual1.jpg" alt="filthyCasual1">
+                    <figcaption>filthyCasual1</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/filthyCasual2.jpg" alt="filthyCasual2">
+                    <figcaption>filthyCasual2</figcaption>
+                </figure><br>
+
+
+                <div class="voteImg">
+                    <select>
+                        <option>filthyCasual1</option>
+                        <option>filthyCasual2</option>
+                    </select>
+
+                    <button type="button" onclick="submitVote('user1')">Submit Vote</button>
+                </div><br><br>
+
+            </div>
+
+            <div id="user1vote" style="display: none">
+                <p>Vote for User1 submitted!</p>
+            </div>
+
+    </div>
+
+    <div>
+            <div id="user2photos">
+                <h3>User2:</h3>
+
+                <figure>
+                    <img src="img/filthyCasual2.jpg" alt="filthyCasual2">
+                    <figcaption>filthyCasual2</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/filthyCasual1.jpg" alt="filthyCasual1">
+                    <figcaption>filthyCasual1</figcaption>
+                </figure><br>
+
+                <div class="voteImg">
+                    <select>
+                        <option>filthyCasual2</option>
+                        <option>filthyCasual1</option>
+                    </select>
+
+                    <button type="button" onclick="submitVote('user2')">Submit Vote</button>
+                </div><br><br>
+
+            </div>
+
+            <div id="user2vote" style="display: none">
+                <p>Vote for User2 submitted!</p>
+            </div>
+
+    </div>
+
+
+
+    <div class = "NavBar">
+        <ul>
+            <div class="dropdown">
+                <button class="dropbtn">Select Category</button>
+                <div class="dropdown-content">
+                    <a href="#">Casual</a>
+                    <a href="dating/">Dating</a>
+                    <a href="vote_page/">Professional</a>
+                </div>
+            </div>
+
+            <li style="float:right"><a href="results/">View Results</a></li>
+            <li style="float:right"><a href="vote/">Start a Vote</a></li>
+        </ul>
+    </div>
+
+
+</body>
+</html>

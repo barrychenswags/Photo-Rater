@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Photo Voter</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+
+<head>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+
+    <p>
+        <input type="file" name="filename" id="filename-input" value="browse" size="18" style="float: left; width: 250px;"><br>
+        <button type="button">Upload</button><br>
+    </p>
+
+    <p>
+        <h3>Image preview:</h3>
+
+        <div id="img1">
+            <img src=img/drugBarney.png>
+            <button onclick="undoUploadImg('img1')">x</button>
+        </div>
+
+    </p>
+
+    <p>
+        <button type="button" onclick="displayVoteStartedMsg()">Start Vote</button>
+    </p>
+
+    <div id="msgVoteStarted" style="display: none" >Vote started!</div>
+
+    <div class = "NavBar">
+        <ul>
+            <div class="dropdown">
+                <button class="dropbtn">Select Category</button>
+                <div class="dropdown-content">
+                    <a href="casual/">Casual</a>
+                    <a href="dating/">Dating</a>
+                    <a href="vote_page/">Professional</a>
+                </div>
+            </div>
+
+            <li style="float:right"><a href="results/">View Results</a></li>
+            <li style="float:right"><a href="#">Start a Vote</a></li>
+        </ul>
+    </div>
+
+
+</body>
+</html>

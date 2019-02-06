@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Professional Images</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+
+<head>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+
+    <h1><strong>Professional</strong></h1>
+
+       <div>
+            <div id="user1photos">
+                <h3>User1:</h3>
+
+                <figure>
+                    <img src="img/hideThePain1.jpg" alt="hideThePain1">
+                    <figcaption>hideThePain1</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/hideThePain2.jpg" alt="hideThePain2">
+                    <figcaption>hideThePain2</figcaption>
+                </figure><br>
+
+
+                <div class="voteImg">
+                    <select>
+                        <option>hideThePain1</option>
+                        <option>hideThePain2</option>
+                    </select>
+
+                    <button type="button" onclick="submitVote('user1')">Submit Vote</button>
+                </div><br><br>
+
+            </div>
+
+            <div id="user1vote" style="display: none">
+                <p>Vote for User1 submitted!</p>
+            </div>
+
+    </div>
+
+    <div>
+            <div id="user2photos">
+                <h3>User2:</h3>
+
+                <figure>
+                    <img src="img/hideThePain2.jpg" alt="hideThePain2">
+                    <figcaption>hideThePain2</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/hideThePain1.jpg" alt="hideThePain1">
+                    <figcaption>hideThePain1</figcaption>
+                </figure><br>
+
+
+                <div class="voteImg">
+                    <select>
+                        <option>hideThePain2</option>
+                        <option>hideThePain1</option>
+                    </select>
+
+                    <button type="button" onclick="submitVote('user2')">Submit Vote</button>
+                </div><br><br>
+
+            </div>
+
+            <div id="user2vote" style="display: none">
+                <p>Vote for User2 submitted!</p>
+            </div>
+
+    </div>
+
+
+
+
+    <div class = "NavBar">
+        <ul>
+            <div class="dropdown">
+                <button class="dropbtn">Select Category</button>
+                <div class="dropdown-content">
+                    <a href="casual/">Casual</a>
+                    <a href="dating/">Dating</a>
+                    <a href="#">Professional</a>
+                </div>
+            </div>
+
+            <li style="float:right"><a href="results/">View Results</a></li>
+            <li style="float:right"><a href="vote/">Start a Vote</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>

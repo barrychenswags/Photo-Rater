@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<form action="" method="POST">
+  
+  <div class="container">
+    <h1>Payment</h1>
+    <p>Please fill in this form to pay.</p>
+    <hr>
+    <img src='/static/img/header-bg.jpg'>
+    <br>
+    <label><b>Credit Card Number</b></label>
+    <input type="text" placeholder="Enter credit card number" name="creditcard" required value="{{request.form.creditcard}}">
+    <br>
+    <label><b>Security Code</b></label>
+    <input type="text" placeholder="Enter security code" name="securityCode" required value="{{request.form.securityCode}}">
+    <br>
+    <label><b>Expiration Month</b></label>
+    <input type="text" placeholder="Enter expiration month" name="expirationMonth" required value="{{request.form.expirationMonth}}">
+    <br>
+    <label><b>Expiration Year</b></label>
+    <input type="text" placeholder="Enter expiration year" name="expirationYear" required value="{{request.form.expirationYear}}">
+    <br>
+    <label><b>Card Holder Name</b></label>
+    <input type="text" placeholder="Enter card holder name" name="cardHolderName" required value="{{request.form.cardHolderName}}">
+    <br>
+    <label><b>Billing Address</b></label>
+    <input type="text" placeholder="Enter billing address" name="billingAddress" required value="{{request.form.billingAddress}}">
+    <br>
+    <label><b>Email</b></label>
+    <input type="text" placeholder="Enter email" name="email" required value="{{request.form.email}}">
+    <br>
+    <label>
+      <input type="checkbox" checked="checked" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By entering your credit card information you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+    <div class="clearfix">
+      <button type="submit" class="signupbtn">Pay</button>
+      <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+    <p>{{error}}</p>
+  </div>
+</form>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</body>
+</html>

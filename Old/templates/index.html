@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agency - Start Getting Help</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./static/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="./static/css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="./static/css/agency.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Help plz</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#services">Requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#requestform">View requests</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{url_for('login_page')}}">Log-in</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{url_for('sign_in')}}">Sign-Up</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-lead-in">Welcome To HelpPlz!</div>
+          <div class="intro-heading text-uppercase">It's Nice To Get Help from Strangers</div>
+          <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Request Help</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Requests -->
+    <section id="services">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Requests</h2>
+            <h3 class="section-subheading text-muted">We all need a little help sometimes.</h3>
+            <form method="POST" id="newrequest" action="{{url_for('newrequest')}}">
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Name of Request</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name ="requestname" placeholder="Input your request">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Request Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="6"></textarea>
+              </div>
+
+              <div class="clearfix">
+              <input type="submit" class="btn btn-primary" value="Submit" {% if not username %}disabled{%endif%}>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- View Requests -->
+    <section id="requestform">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">View Requests</h2>
+            <h3 class="section-subheading text-muted">We all need a little help sometimes.</h3>
+          </div>
+        </div>
+        {% if requests %}
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div id="accordion">
+                    {% for request in requests %}
+                    {% if request.accepted == False %}
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{loop.index}}" aria-expanded="false" aria-controls="collapse{{loop.index}}">
+                                    {{ request.help }}
+                                </button>
+                            </h5>
+                        </div>
+                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Acceptance Confirmation</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure you want to accept? An email will be sent on your behalf to the postee expressing your interest
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <a role="button" class="btn btn-primary" href="{{url_for('emailreceive', username=request.taskauthor )}}">Accept</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        <div id="collapse{{loop.index}}" class="collapse show" aria-labelledby="heading{{loop.index}}" data-parent="#accordion">
+                            <div class="card-body">
+                                {{ request.description }}
+                              <p>{{ request.email }}</p>
+                                <!-- Button trigger modal -->
+                                <button type="button" style = "float:right;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" {% if not username %}disabled{%endif%}>
+                                    Accept
+                                </button>
+                                
+                                <!-- Modal -->
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+    
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">About</h2>
+            <h3 class="section-subheading text-muted">A platform where you can help or get help.</h3>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="bg-light" id="team">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
+            <h3 class="section-subheading text-muted">We worked hard on this.</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="team-member">
+              
+              <h4>Simon</h4>
+              <p class="text-muted">Lead Designer</p>
+              <ul class="list-inline social-buttons">
+                
+                <li class="list-inline-item">
+                  <a href="https://www.facebook.com/simonykhsu">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.linkedin.com/in/simonykhsu/">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="team-member">
+              
+              <h4>Dillon</h4>
+              <p class="text-muted">Lead Developer</p>
+              <ul class="list-inline social-buttons">
+                
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="team-member">
+              
+              <h4>Sheldon</h4>
+              <p class="text-muted">Lead Developer</p>
+              <ul class="list-inline social-buttons">
+                
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="team-member">
+              
+              <h4>Jaleel</h4>
+              <p class="text-muted">Lead Developer</p>
+              <ul class="list-inline social-buttons">
+                
+                <li class="list-inline-item">
+                  <a href="#">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="https://www.linkedin.com/in/jaleel-jolly-589491125/">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <p class="large text-muted">This project was done within 24 hours duing Hackatown 2018 at École Polytechnique using HTML5/CSS bootstrap, python flask framework, MongoDB and Softheon payment API.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <span class="copyright">Copyright &copy; Hackatown 2018</span>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline social-buttons">
+              <li class="list-inline-item">
+                <a href="https://github.com/JaleelJolly/Hackatown">
+                  <i class="fa fa-github"></i>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul class="list-inline quicklinks">
+              <li class="list-inline-item">
+                <a href="#">Privacy Policy</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="./static/css/vendor/jquery/jquery.min.js"></script>
+    <script src="./static/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="./static/css/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    
+
+    <!-- Custom scripts for this template -->
+    <script src="./static/js/agency.min.js"></script>
+
+
+  </body>
+
+</html>

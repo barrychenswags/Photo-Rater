@@ -1,0 +1,46 @@
+<!DOCTYPE html> {% extends "base.html" %}
+<html lang="en">
+
+<head>
+    {% block head %} {{ super() }} {% endblock %}
+</head>
+
+<body>
+    {% block body %}
+
+     {% with messages = get_flashed_messages() %} {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    {% if form %}
+    <div class="wrapper" style="max-width=300px;">
+    <form action="{{ url_for('sign_in') }}" method=post class="form-signin">
+         {{ form.csrf_token }}
+        <h2 class="form-signin-heading">Sign Up</h2>
+        <img src='/static/img/header-bg.jpg'>
+    <br>
+        {{ form.email(**{'class': 'form-control', 'placeholder': 'Email Address', 'required': '', 'autofocus':''}) }}
+
+         {{ form.username(**{'class': 'form-control', 'placeholder': 'Username', 'required': ''}) }}
+
+        {{ form.password(**{'class': 'form-control', 'placeholder': 'Password', 'required': ''}) }}
+
+         {{ form.confirm(**{'class': 'form-control', 'placeholder': 'Confirm Password', 'required': ''}) }}
+        <label class="checkbox">
+         {{ form.accept_rules(**{'id': 'accept_rules'}) }} I accept the site rules
+        </label>
+        {{ form.submit(**{'class': 'btn btn-lg btn-primary btn-block input-sm', 'type': 'submit'}) }}
+    </form>
+    <p> Already have an account? </p>
+    <button type="button" class="signupbtn">Log in Here</button>
+    </div>
+    {% endif %}
+    {{ super() }}
+    {% endblock %}
+    
+</body>
+</html>

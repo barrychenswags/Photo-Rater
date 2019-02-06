@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<title>Photo Voter</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+
+<style type="text/css">
+.container {
+  width: 400px;
+  height: 300px;
+  background: url(http://farm2.staticflickr.com/1486/23990047223_5b7a0c82e8_b.jpg);
+  background-size: cover;
+  margin: 0 auto 100px;
+}
+
+.darken-pseudo {
+  position: relative;
+}
+
+.darken-pseudo:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.darken-with-text p {
+  margin: 0;
+  font-size: 2em;
+  text-align: center;
+  color: white;
+  padding-top: 50px;
+  position: relative;
+  z-index: 1;
+}
+</style>
+
+<head>
+    <script src="js/test.js"></script>
+</head>
+
+<body>
+    <div class="container darken-pseudo darken-with-text">
+        <p>Hello world!</p>
+    </div>
+
+    <h1>Tester</h1>
+
+    <button type="button" onclick="revealMessage()">
+        Clicky
+    </button>
+
+    <div id="hiddenMessage" style="display: none">
+        <p>
+            Spooky scary skeletons
+        </p>
+        <button type="button" id="countDownButton" onclick="countDown()">
+            10
+        </button>
+    </div>
+
+    <div class = "NavBar">
+        <ul>
+            <li style="float:left"><a href="#">Home</a></li>
+            <li style="float:left"><a href="#">Categories</a></li>
+
+            <li style="float:right"><a href="#">Register</a></li>
+            <li style="float:right"><a href="#">Login</a></li>
+        </ul>
+    </div>
+
+</body>
+
+
+</html>
